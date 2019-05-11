@@ -1,6 +1,5 @@
 package utils;
 
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,9 +7,10 @@ public class MessageToEncrypt {
 
     private String messaggeToEncrypt;
     private String regex = "[a-zA-Z0-9 ]+";
+    private String[][] matrice;
 
     public MessageToEncrypt(){
-        this.messaggeToEncrypt="";
+
     }
 
     public void setMessaggeToEncrypt(String messaggeToEncrypt) {

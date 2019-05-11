@@ -1,5 +1,6 @@
 package main;
 
+import utils.Encryptor;
 import utils.InitTable;
 import utils.MessageToEncrypt;
 
@@ -19,6 +20,11 @@ public class Main {
             System.out.println("Entrer le message a encrypter [a-z A-Z 0-9] et espace autorise : ");
             clearMessage.setMessaggeToEncrypt(scanner.nextLine());
         }
+
+        Encryptor encryptor = new Encryptor();
+        String encryptedMessage = encryptor.encryptedMessage(clearMessage.getMessaggeToEncrypt(), ini.getMyMatrice());
+
+        System.out.println(encryptedMessage);
 
     }
 }
