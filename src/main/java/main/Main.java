@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        /*
         Scanner scanner = new Scanner(System.in);
 
         Matrice ini = new Matrice();
@@ -34,5 +35,11 @@ public class Main {
             System.out.println("Entrez la clé (caracteres distinct uniquement) : ");
             key.setKey(scanner.nextLine());
         }
+
+        FileCreator.createFile("key", key.getKey());
+
+        */
+        Permutator permutator = new Permutator();
+        System.out.println(permutator.setNumberOfRow("cle","message"));
     }
 }
