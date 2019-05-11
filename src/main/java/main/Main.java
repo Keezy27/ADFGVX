@@ -1,15 +1,17 @@
 package main;
 
 import utils.Encryptor;
-import utils.InitTable;
+import utils.FileCreator;
+import utils.Matrice;
 import utils.MessageToEncrypt;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        InitTable ini = new InitTable();
-        ini.initDimTable();
+    public static void main(String[] args) throws IOException {
+        Matrice ini = new Matrice();
+        ini.initMatric();
         ini.print();
 
         MessageToEncrypt clearMessage = new MessageToEncrypt();
@@ -20,11 +22,10 @@ public class Main {
             System.out.println("Entrer le message a encrypter [a-z A-Z 0-9] et espace autorise : ");
             clearMessage.setMessaggeToEncrypt(scanner.nextLine());
         }
-
         Encryptor encryptor = new Encryptor();
-        String encryptedMessage = encryptor.encryptedMessage(clearMessage.getMessaggeToEncrypt(), ini.getMyMatrice());
 
-        System.out.println(encryptedMessage);
+        FileCreator fileMessageEncrypted = new FileCreator("encrypted", encryptor.encryptedMessage(clearMessage.getMessaggeToEncrypt(), ini.getMatrice()));
+
 
     }
 }

@@ -7,14 +7,14 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class InitTable {
+public class Matrice {
 
     private Character[][] myMatrice = new Character[7][7];
     private ArrayList<Character> alphaChar;
     int rangeRandom;
     Random randomGenerator;
 
-    public InitTable(){
+    public Matrice(){
         this.randomGenerator = new Random();
         this.rangeRandom = 36;
 
@@ -57,7 +57,7 @@ public class InitTable {
         this.alphaChar.add('9');
     }
 
-    public void initDimTable(){
+    public void initMatric(){
 
         for(int i=0; i<7; i++){
             for(int j=0; j<7;j++){
@@ -105,7 +105,7 @@ public class InitTable {
         }
     }
 
-    public Character[][] getMyMatrice(){
+    public Character[][] getMatrice(){
         return this.myMatrice;
     }
 }
