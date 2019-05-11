@@ -24,8 +24,8 @@ public class Main {
         }
         Encryptor encryptor = new Encryptor();
 
-        FileCreator fileMessageEncrypted = new FileCreator("encrypted", encryptor.encryptedMessage(clearMessage.getMessaggeToEncrypt(), ini.getMatrice()));
-        FileCreator fileMatrice = new FileCreator("matrice", ini.getMatriceContent());
+        FileCreator.createFile("encrypted", encryptor.encryptedMessage(clearMessage.getMessaggeToEncrypt(), ini.getMatrice()));
+        FileCreator.createFile("matrice", ini.getMatriceContent());
 
     }
 }
