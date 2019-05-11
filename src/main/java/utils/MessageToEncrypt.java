@@ -7,7 +7,6 @@ public class MessageToEncrypt {
 
     private String messaggeToEncrypt;
     private String regex = "[a-zA-Z0-9 ]+";
-    private String[][] matrice;
 
     public MessageToEncrypt(){
 
@@ -23,7 +22,7 @@ public class MessageToEncrypt {
 
     public Boolean isMessageOK(){
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(getMessaggeToEncrypt());;
+        Matcher matcher = pattern.matcher(this.getMessaggeToEncrypt());;
         return matcher.matches();
     }
 }
