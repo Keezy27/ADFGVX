@@ -108,4 +108,17 @@ public class Matrice {
     public Character[][] getMatrice(){
         return this.myMatrice;
     }
+
+
+    public String getMatriceContent(){
+        StringBuilder matriceContent = new StringBuilder();
+
+        for (int i = 1; i < myMatrice.length; i++){
+            for (int j = 1; j < myMatrice.length; j++){
+                matriceContent.append(myMatrice[j][i]);
+            }
+        }
+
+        return matriceContent.toString();
+    }
 }
