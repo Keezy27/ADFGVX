@@ -23,15 +23,15 @@ public class Permutator {
         this.key = key;
     }
 
-    public int setNumberOfRow(String key, String encryptedMessage){
-        int nbRow = 0;
+    private int getNumberOfRow(String key, String encryptedMessage){
+        int nbRow;
         int keyLength = key.length();
         int messageLength = encryptedMessage.length();
 
         if(messageLength > keyLength){
-            nbRow = (messageLength / keyLength) + (messageLength % keyLength);
-        }else if(messageLength < keyLength){
-            nbRow = 1;
+            nbRow = (messageLength / keyLength) + (messageLength % keyLength) + 1;
+        }else{
+            nbRow = 2;
         }
 
         return nbRow;

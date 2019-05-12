@@ -39,7 +39,12 @@ public class Main {
         FileCreator.createFile("key", key.getKey());
 
         */
+
+        Matrice ini = new Matrice();
+        ini.initMatric();
+        ini.print();
+
         Permutator permutator = new Permutator();
-        System.out.println(permutator.setNumberOfRow("cle","message"));
+        permutator.generateUnorderedMatrice("cle","message");
     }
 }

@@ -96,7 +96,7 @@ public class Matrice {
 
         for(int i = 0; i < myMatrice.length; i++){
             for(int j = 0; j < myMatrice.length; j++){
-                System.out.print("| " + myMatrice[j][i] + " |");
+                System.out.print("| " + myMatrice[i][j] + " |");
                 if( j == (myMatrice.length -1)){
                     System.out.println("\n---------------------------------");
                     System.out.println();
