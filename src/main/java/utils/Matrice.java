@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class Matrice {
 
-    private Character[][] myMatrice = new Character[7][7];
+    private char[][] myMatrice = new char[7][7];
     private ArrayList<Character> alphaChar;
     int rangeRandom;
     Random randomGenerator;
@@ -96,7 +96,7 @@ public class Matrice {
 
         for(int i = 0; i < myMatrice.length; i++){
             for(int j = 0; j < myMatrice.length; j++){
-                System.out.print("| " + myMatrice[i][j] + " |");
+                System.out.print("| " + myMatrice[j][i] + " |");
                 if( j == (myMatrice.length -1)){
                     System.out.println("\n---------------------------------");
                     System.out.println();
@@ -105,7 +105,7 @@ public class Matrice {
         }
     }
 
-    public Character[][] getMatrice(){
+    public char[][] getMatrice(){
         return this.myMatrice;
     }
 

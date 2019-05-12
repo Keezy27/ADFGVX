@@ -74,8 +74,8 @@ public class Permutator {
         return getEncryptedMessage().toCharArray();
     }
 
-    public void generateUnorderedMatrice(String key, String encryptedMessage){
-        int nbRow = getNumberOfRow(key,encryptedMessage);
+    public void generateUnorderedMatrice(){
+        int nbRow = getNumberOfRow(this.getKey(),this.getEncryptedMessage());
         this.setUnorderedMatrice(new char[nbRow][this.getKey().length()]);
 
         int messageIndex = 0;
@@ -95,7 +95,37 @@ public class Permutator {
         }
     }
 
-    //public void set
+    private char[][] initialiseArray(char[][] array, int nbRow, int nbCol){
+        for(int i = 0; i < nbRow; i++){
+            for(int j = 0; j < nbCol; j++){
+                array[i][j] = ' ';
+            }
+        }
+        return array;
+    }
+
+    public void generateOrderedMatrcice(){
+        int nbOfRow = getNumberOfRow(this.getKey(), this.getEncryptedMessage());
+        this.orderedMatrice = new char[nbOfRow][key.length()];
+        //this.orderedMatrice = initialiseArray(orderedMatrice, nbOfRow, key.length());
+        char[] orderedKey = getOrderKeyArray(getKeyAsArray());
+
+        for(int i = 0; i < orderedKey.length; i++){
+            int indexOfLetter = convertToArrayList(getKeyAsArray()).indexOf(orderedKey[i]);
+            //System.out.println(indexOfLetter);
+            for(int j = 0; j < nbOfRow; j++){
+                if(j == 0) {
+                    this.orderedMatrice[j][i] = orderedKey[i];
+                }else{
+                    this.orderedMatrice[j][i] = getUnorderedMatrice()[j][indexOfLetter];
+                }
+            }
+        }
+    }
+
+    public char[][] getOrderedMatrice() {
+        return orderedMatrice;
+    }
 
     public void print(){
         System.out.println("unorderdMatric ");

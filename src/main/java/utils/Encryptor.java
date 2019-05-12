@@ -4,14 +4,14 @@ import org.apache.commons.lang3.CharUtils;
 
 public class Encryptor {
 
-    private String[][] matrice;
+    private char[][] matrice;
     private String clearMessage;
 
 
     public Encryptor(){
     }
 
-    public String intermediateEncryptedMessage(String message, Character[][] matrice){
+    public String intermediateEncryptedMessage(String message, char[][] matrice){
         StringBuilder encryptedMessage = new StringBuilder();
         char[] messageArray = message.toCharArray();
 
@@ -23,8 +23,8 @@ public class Encryptor {
                 for(int j=1; j < matrice.length; j++){
                     for(int k=1; k < matrice.length; k++){
                         if( messageArray[i] == CharUtils.toChar(matrice[j][k])){
-                            encryptedMessage.append(matrice[0][k]);
-                            encryptedMessage.append(matrice[j][0]);
+                            encryptedMessage.append(matrice[k][0]);
+                            encryptedMessage.append(matrice[0][j]);
                         }
                     }
                 }
