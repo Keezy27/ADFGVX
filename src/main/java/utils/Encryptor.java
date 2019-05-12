@@ -11,7 +11,7 @@ public class Encryptor {
     public Encryptor(){
     }
 
-    public String encryptedMessage(String message, Character[][] matrice){
+    public String intermediateEncryptedMessage(String message, Character[][] matrice){
         StringBuilder encryptedMessage = new StringBuilder();
         char[] messageArray = message.toCharArray();
 
@@ -33,6 +33,17 @@ public class Encryptor {
         }
 
         return encryptedMessage.toString();
+    }
+
+    public String finalEncryption(char[][] orderedMatrice){
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 1; i < orderedMatrice.length; i++){
+            for(int j = 0; j < orderedMatrice[i].length; j++){
+                sb.append(orderedMatrice[i][j]);
+            }
+        }
+        return sb.toString();
     }
 
 
