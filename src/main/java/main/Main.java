@@ -44,7 +44,8 @@ public class Main {
         ini.initMatric();
         ini.print();
 
-        Permutator permutator = new Permutator();
-        permutator.generateUnorderedMatrice("cle","message");
+        Permutator permutator = new Permutator("cle","message");
+        permutator.generateUnorderedMatrice();
+        permutator.print();
     }
 }

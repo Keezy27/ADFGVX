@@ -4,15 +4,20 @@ import java.util.ArrayList;
 
 public class Permutator {
     private String key;
-    private ArrayList<ArrayList<Character>> matriceEncrypted;
+    private String encryptedMessage;
+    private char[][] unorderedMatrice;
+    private char[] keyArray;
+    private char[] encryptedArray;
+    //private ArrayList<ArrayList<Character>> matriceEncrypted;
 
     public Permutator(){
-        matriceEncrypted = new ArrayList<ArrayList<Character>>();
+        //matriceEncrypted = new ArrayList<ArrayList<Character>>();
     }
 
-    public Permutator(String key){
+    public Permutator(String key, String encryptedMessage){
         this();
         this.key = key;
+        this.encryptedMessage = encryptedMessage;
     }
 
     public String getKey() {
@@ -23,28 +28,39 @@ public class Permutator {
         this.key = key;
     }
 
-    public void generateUnorderedMatrice(String key, String encryptedMessage){
-        char[] keyArray = key.toCharArray();
-        char[] encryptedArray = encryptedMessage.toCharArray();
-        char[][] unorderedMatrice = new char[getNumberOfRow(key,encryptedMessage)][key.length()];
+    public String getEncryptedMessage() {
+        return encryptedMessage;
+    }
+
+    public void setEncryptedMessage(String encryptedMessage) {
+        this.encryptedMessage = encryptedMessage;
+    }
+
+    public void generateUnorderedMatrice(){
+        this.keyArray = this.getKey().toCharArray();
+        this.encryptedArray = this.getEncryptedMessage().toCharArray();
+        int nbRow = getNumberOfRow(this.getKey(),this.getEncryptedMessage());
+        this.unorderedMatrice = new char[nbRow][this.getKey().length()];
 
         int messageIndex = 0;
-        for(int i = 0; i < getNumberOfRow(key,encryptedMessage); i++){
+        for(int i = 0; i < nbRow; i++){
             for(int j = 0; j < keyArray.length; j++){
                 if(i == 0){
-                    unorderedMatrice[i][j] = keyArray[j];
+                    this.unorderedMatrice[i][j] = keyArray[j];
                 }else{
                     if(messageIndex < encryptedArray.length){
-                        unorderedMatrice[i][j] = encryptedArray[messageIndex];
+                        this.unorderedMatrice[i][j] = encryptedArray[messageIndex];
                         messageIndex++;
                     }else{
-                        unorderedMatrice[i][j] = ' ';
+                        this.unorderedMatrice[i][j] = ' ';
                     }
                 }
             }
         }
+    }
 
-        /*for(int i = 0; i < getNumberOfRow(key,encryptedMessage); i++) {
+    public void print(){
+        for(int i = 0; i < getNumberOfRow(key,encryptedMessage); i++) {
             for (int j = 0; j < keyArray.length; j++) {
                 System.out.print("| " + unorderedMatrice[i][j] + " |");
                 if( j == (keyArray.length -1)){
@@ -52,7 +68,7 @@ public class Permutator {
                     System.out.println();
                 }
             }
-        }*/
+        }
     }
 
     private int getNumberOfRow(String key, String encryptedMessage){
