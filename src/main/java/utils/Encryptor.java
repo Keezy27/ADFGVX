@@ -1,7 +1,5 @@
 package utils;
 
-import org.apache.commons.lang3.CharUtils;
-
 public class Encryptor {
 
     private char[][] matrice;
@@ -11,7 +9,7 @@ public class Encryptor {
     public Encryptor(){
     }
 
-    public String intermediateEncryptedMessage(String message, char[][] matrice){
+    /*public String intermediateEncryptedMessage(String message, char[][] matrice){
         StringBuilder encryptedMessage = new StringBuilder();
         char[] messageArray = message.toCharArray();
 
@@ -23,19 +21,17 @@ public class Encryptor {
                 for(int j=1; j < matrice.length; j++){
                     for(int k=1; k < matrice.length; k++){
                         if( messageArray[i] == CharUtils.toChar(matrice[j][k])){
-                            encryptedMessage.append(matrice[k][0]);
                             encryptedMessage.append(matrice[0][j]);
+                            encryptedMessage.append(matrice[k][0]);
                         }
                     }
                 }
             }
-
         }
-
         return encryptedMessage.toString();
-    }
+    }*/
 
-    public String finalEncryption(char[][] orderedMatrice){
+    /*public String finalEncryption(char[][] orderedMatrice){
         StringBuilder sb = new StringBuilder();
 
         for(int i = 1; i < orderedMatrice.length; i++){
@@ -44,7 +40,7 @@ public class Encryptor {
             }
         }
         return sb.toString();
-    }
+    }*/
 
 
 

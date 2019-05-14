@@ -1,9 +1,6 @@
 package utils;
 
 
-import org.apache.commons.lang3.CharUtils;
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -96,7 +93,7 @@ public class Matrice {
 
         for(int i = 0; i < myMatrice.length; i++){
             for(int j = 0; j < myMatrice.length; j++){
-                System.out.print("| " + myMatrice[j][i] + " |");
+                System.out.print("| " + myMatrice[i][j] + " |");
                 if( j == (myMatrice.length -1)){
                     System.out.println("\n---------------------------------");
                     System.out.println();
@@ -115,7 +112,7 @@ public class Matrice {
 
         for (int i = 1; i < myMatrice.length; i++){
             for (int j = 1; j < myMatrice.length; j++){
-                matriceContent.append(myMatrice[j][i]);
+                matriceContent.append(myMatrice[i][j]);
             }
         }
 

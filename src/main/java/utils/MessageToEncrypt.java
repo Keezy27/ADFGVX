@@ -9,7 +9,6 @@ public class MessageToEncrypt {
     private String regex = "[a-zA-Z0-9 ]+";
 
     public MessageToEncrypt(){
-
     }
 
     public void setMessaggeToEncrypt(String messaggeToEncrypt) {
