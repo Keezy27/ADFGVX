@@ -52,8 +52,17 @@ public class Main {
 
         System.out.println("Encrypted : " +FileCreator.readFile("encrypted"));
         System.out.println("Matrice : " +FileCreator.readFile("matrice"));
-        ADFGVXcypher xcypher = new ADFGVXcypher();
-        xcypher.genMatriceWithKeyAlpha(FileCreator.readFile("key"),FileCreator.readFile("encrypted"));
+        System.out.println("Key : " +FileCreator.readFile("key"));
+        ADFGVXdecipher decipher = new ADFGVXdecipher();
+
+        char[][] ok = decipher.genMatriceFromKeyAlpha(FileCreator.readFile("key"),FileCreator.readFile("encrypted"),decipher.genMatriceWithKeyAlpha(FileCreator.readFile("key"),FileCreator.readFile("encrypted")));
+
+        for(int row = 0; row < ok.length; row++){
+            for(int col = 0; col < ok[row].length; col++){
+                System.out.print("| "+ ok[row][col] +" |");
+            }
+            System.out.println("\n-----------------");
+        }
 
     }
 }

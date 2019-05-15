@@ -129,26 +129,6 @@ public class ADFGVXcypher {
     }
 
     /*------------------- DECRYPTE -----------------*/
-    public char[][] genMatriceWithKeyAlpha(String key, String cryptedMessage){
-        char[][] matriceWithKeyAlpha = new char[getNumberOfRow(key,cryptedMessage)][key.length()];
-        char[] orderedKeyArray = getOrderKeyArray(key.toCharArray());
-        char[] cryptedMessageArray = cryptedMessage.toCharArray();
 
-        int cryptedIndex = 0;
-        for(int row = 0; row < key.length(); row++){
-            for(int col = 0; col < matriceWithKeyAlpha.length; col++){
-                if(row == 0){
-                    matriceWithKeyAlpha[row][col] = orderedKeyArray[col];
-                }else{
-                    matriceWithKeyAlpha[row][col] = cryptedMessageArray[cryptedIndex];
-                    cryptedIndex++;
-                }
-                System.out.print("| "+ matriceWithKeyAlpha[row][col]+" |");
-            }
-            System.out.println("\n-----------------------------------------");
-        }
-
-        return matriceWithKeyAlpha;
-    }
 
 }
