@@ -3,25 +3,29 @@ package utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MessageToEncrypt {
+public class Message {
 
-    private String messaggeToEncrypt;
+    private String message;
     private String regex = "[a-zA-Z0-9 ]+";
 
-    public MessageToEncrypt(){
+    public Message(){
+    }
+
+    public Message(String message){
+        this.message = message;
     }
 
     public void setMessaggeToEncrypt(String messaggeToEncrypt) {
-        this.messaggeToEncrypt = messaggeToEncrypt.toUpperCase();
+        this.message = messaggeToEncrypt.toUpperCase();
     }
 
-    public String getMessaggeToEncrypt(){
-        return this.messaggeToEncrypt;
+    public String getMessagge(){
+        return this.message;
     }
 
     public Boolean isMessageOK(){
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(this.getMessaggeToEncrypt());;
+        Matcher matcher = pattern.matcher(this.getMessagge());;
         return matcher.matches();
     }
 }

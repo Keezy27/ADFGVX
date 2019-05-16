@@ -8,6 +8,13 @@ public class Key {
     private String key;
     private String regex = "[a-zA-Z]+";
 
+    public Key(){
+    }
+    public Key(String key){
+        this();
+        this.key = key;
+    }
+
     public void setKey(String key) {
         this.key = key.toUpperCase();
     }

@@ -118,4 +118,59 @@ public class Matrice {
 
         return matriceContent.toString();
     }
+
+    public void initMatric(String matriceFromFile){
+        ArrayList<Character> matriceArray = ArrayTools.convertToArrayList(matriceFromFile.toCharArray());;
+        if(matriceFromFile != null){
+            matriceArray = ArrayTools.convertToArrayList(matriceFromFile.toCharArray());
+        }
+        for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 7; j++){
+                if((i == 0) && (j == 0)){
+                    myMatrice[i][j] = ' ';
+                } else if((i == 0 && j == 1) || (j == 0 && i == 1)){
+                    myMatrice[i][j] = 'A';
+                } else if ((i == 2 && j == 0) || (j == 2 && i == 0)) {
+                    myMatrice[i][j] = 'D';
+                } else if ((i == 3 && j == 0) || (j == 3 && i == 0)) {
+                    myMatrice[i][j] = 'F';
+                } else if ((i == 4 && j == 0) || (j == 4 && i == 0)) {
+                    myMatrice[i][j] = 'G'; //StringUtils.center("G",5);
+                } else if ((i == 5 && j == 0) || (j == 5 && i == 0)) {
+                    myMatrice[i][j] = 'V';//StringUtils.center("V",5);
+                } else if ((i == 6 && j == 0) || (j == 6 && i == 0)) {
+                    myMatrice[i][j] = 'X';//StringUtils.center("X", 5);
+                } else {
+                    if(matriceFromFile == null){
+                        myMatrice[i][j] = getChar();
+                    }else{
+                        myMatrice[i][j] = matriceArray.get(0);
+                        matriceArray.remove(0);
+                    }
+                }
+            }
+        }
+    }
+
+    private boolean checkMatriceFromFile(ArrayList<Character> arrayFromFile){
+        boolean isArrayOk = true;
+
+        if(arrayFromFile.size() != alphaChar.size()){
+            isArrayOk = false;
+        }else{
+            for(Character charToCheck : arrayFromFile){
+                if(isArrayOk){
+                    if(!alphaChar.contains(charToCheck)){
+                        isArrayOk = false;
+                    }else{
+                        if(alphaChar.indexOf(charToCheck) != alphaChar.lastIndexOf(charToCheck)){
+                            isArrayOk = false;
+                        }
+                    }
+                }
+            }
+        }
+
+        return isArrayOk;
+    }
 }

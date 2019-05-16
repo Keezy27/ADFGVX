@@ -1,6 +1,11 @@
 package main;
 
-import utils.*;
+import cypher.ADFGVXcypher;
+import cypher.ADFGVXdecipher;
+import utils.FileCreator;
+import utils.Key;
+import utils.Matrice;
+import utils.Message;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -9,17 +14,17 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
 
-        /*
         //  GENERATE MATRICE
         Matrice matrice = new Matrice();
         matrice.initMatric();
         matrice.print();
         FileCreator.createFile("matrice", matrice.getMatriceContent());
 
-        //  MESSAGE TO CRYPT
-        MessageToEncrypt clearMessage = new MessageToEncrypt();
+        //  MESSAGE TO ENCRYPT
+        Message clearMessage = new Message();
         System.out.println("Entrer le message a encrypter [a-z A-Z 0-9]: ");
         clearMessage.setMessaggeToEncrypt(scanner.nextLine());
+
         while (!clearMessage.isMessageOK()){
             System.out.println("Entrer le message a encrypter [a-z A-Z 0-9] et espace autorise : ");
             clearMessage.setMessaggeToEncrypt(scanner.nextLine());
@@ -37,9 +42,9 @@ public class Main {
 
 
         //  ENCRYPT
-        ADFGVXcypher xcypher = new ADFGVXcypher();
-        FileCreator.createFile("encrypted", xcypher.getCryptedMessage(xcypher.genMatriceWithKeyAlpha(key.getKey(),xcypher.genMatriceWithKey(key.getKey(),xcypher.intermediateEncrypt(clearMessage.getMessaggeToEncrypt(),matrice.getMatrice())))));
-        */
+        ADFGVXcypher xcypher = new ADFGVXcypher(key.getKey(),clearMessage.getMessagge());
+        FileCreator.createFile("encrypted", xcypher.encryptMessage(matrice.getMatrice()));
+
 
         /*-------------------------------------------------------------------------------------------------------*/
 
@@ -53,16 +58,14 @@ public class Main {
         System.out.println("Encrypted : " +FileCreator.readFile("encrypted"));
         System.out.println("Matrice : " +FileCreator.readFile("matrice"));
         System.out.println("Key : " +FileCreator.readFile("key"));
-        ADFGVXdecipher decipher = new ADFGVXdecipher();
 
-        char[][] ok = decipher.genMatriceFromKeyAlpha(FileCreator.readFile("key"),FileCreator.readFile("encrypted"),decipher.genMatriceWithKeyAlpha(FileCreator.readFile("key"),FileCreator.readFile("encrypted")));
+        Key keyForDecryption = new Key(FileCreator.readFile("key"));
+        Message messageToDecrypt = new Message(FileCreator.readFile("encrypted"));
 
-        for(int row = 0; row < ok.length; row++){
-            for(int col = 0; col < ok[row].length; col++){
-                System.out.print("| "+ ok[row][col] +" |");
-            }
-            System.out.println("\n-----------------");
-        }
+        ADFGVXdecipher decipher = new ADFGVXdecipher(keyForDecryption.getKey(),messageToDecrypt.getMessagge());
+        Matrice matriceDecipher = new Matrice();
+        matriceDecipher.initMatric(FileCreator.readFile("matrice"));
+        FileCreator.createFile("decrypted", decipher.getMessage());
 
     }
 }
